@@ -1,3 +1,3 @@
-meja-hotstreak bd903ed + redesign & PWA-fix patches (uncommitted)
-meja-splendor d2ec0ad + redesign & PWA-fix patches (uncommitted)
-meja-skyteam d018ac5 + redesign & PWA-fix patches (uncommitted)
+meja-hotstreak redesign-karnaval@7e473f9 (base main@bd903ed) 
+meja-splendor redesign-karnaval@a140324 (base main@d2ec0ad) 
+meja-skyteam redesign-karnaval@83dd968 (base main@d018ac5) 
