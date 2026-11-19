@@ -1,0 +1,9 @@
+services:
+  web:
+    build: .
+    image: meja-web
+    container_name: meja-web
+    restart: unless-stopped
+    # Bound to localhost only; Cloudflare Tunnel publishes it as meja.doncorleonez.my.id.
+    ports:
+      - "127.0.0.1:${MEJA_PORT:-8190}:80"

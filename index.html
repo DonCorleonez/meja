@@ -1,0 +1,306 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+<meta name="theme-color" content="#FFF7EC" />
+<meta name="description" content="Meja — board game untuk dimainkan bareng di satu HP atau tablet. Hot Streak, Splendor, Sky Team, dan Shikoku." />
+<title>Meja · Main board game bareng</title>
+<link rel="icon" href="icon.svg" type="image/svg+xml" />
+<link rel="manifest" href="manifest.webmanifest" />
+<style>
+  :root {
+    --bg: #FFF7EC; --surface: #FFFFFF; --surface-2: #F7F1E8; --line: #EFE6DA;
+    --text: #2B2236; --text-dim: #6E6380;
+    --coral: #E5484D; --coral-press: #C73A3F; --coral-soft: #FFE1D3;
+    --tangerine: #FF8A3D; --sunny: #FFC83D; --mint: #2EC4A6; --sky: #3DA5FF; --grape: #7B5CFF;
+    --ok: #158A57; --ok-soft: #E3F6EC;
+    --candy: linear-gradient(90deg, #D93A40, #E5552F);
+    --font: system-ui, -apple-system, "Segoe UI Variable Text", "Segoe UI", Roboto, "Noto Sans", sans-serif;
+    --display: ui-rounded, "SF Pro Rounded", "Segoe UI Variable Display", "Nunito", system-ui, sans-serif;
+    --r-md: 16px; --r-lg: 28px;
+    --shadow-sm: 0 4px 12px rgba(43, 34, 54, .08);
+    --shadow: 0 12px 30px rgba(43, 34, 54, .12);
+    --ease: cubic-bezier(.2, .8, .2, 1); --spring: cubic-bezier(.34, 1.56, .64, 1);
+  }
+  * { box-sizing: border-box; }
+  html { color-scheme: light; scroll-behavior: smooth; }
+  body {
+    margin: 0; min-height: 100dvh; color: var(--text); font-family: var(--font); line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+    background:
+      radial-gradient(800px 700px at 8% -5%, #FFD9C2 0, transparent 60%),
+      radial-gradient(700px 600px at 95% 10%, #CFF3E4 0, transparent 60%),
+      radial-gradient(900px 800px at 50% 105%, #D6E9FF 0, transparent 60%),
+      radial-gradient(600px 600px at 100% 80%, #E9DDFF 0, transparent 60%),
+      var(--bg);
+    background-attachment: fixed;
+  }
+  a { color: inherit; }
+  :focus-visible { outline: 3px solid var(--coral); outline-offset: 3px; border-radius: 8px; }
+  .wrap { width: min(100% - 32px, 1080px); margin-inline: auto; }
+
+  /* header */
+  header.top {
+    position: sticky; top: 0; z-index: 5;
+    background: color-mix(in srgb, var(--bg) 80%, transparent); backdrop-filter: saturate(1.4) blur(12px);
+    border-bottom: 1px solid rgba(239, 230, 218, .7);
+  }
+  header.top .wrap { display: flex; align-items: center; gap: 12px; min-height: 64px; }
+  .brand { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; font-family: var(--display); font-weight: 900; font-size: 22px; letter-spacing: -.02em; }
+  .brand svg { width: 36px; height: 36px; }
+  header nav { margin-left: auto; display: flex; gap: 4px; }
+  header nav a { text-decoration: none; font-weight: 700; font-size: 14px; color: var(--text-dim); padding: 10px 14px; border-radius: 999px; }
+  header nav a:hover { background: rgba(43, 34, 54, .06); color: var(--text); }
+
+  /* hero */
+  .hero { position: relative; padding: 56px 0 40px; text-align: center; }
+  .bunting { display: block; width: min(100%, 640px); height: 44px; margin: 0 auto 24px; }
+  .eyebrow { display: inline-block; padding: 6px 14px; border-radius: 999px; background: var(--surface); box-shadow: var(--shadow-sm); font-size: 13px; font-weight: 800; color: var(--coral-press); letter-spacing: .02em; }
+  .hero h1 { font-family: var(--display); font-weight: 900; letter-spacing: -.035em; line-height: 1.02; font-size: clamp(40px, 8vw, 76px); margin: 18px 0 14px; }
+  .hero h1 .pop { background: linear-gradient(90deg, #E5484D, #FF8A3D 35%, #E8A80F 55%, #1FA889 75%, #6B4FE8); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .hero p.lead { max-width: 600px; margin: 0 auto 28px; font-size: clamp(16px, 2.2vw, 19px); color: var(--text-dim); }
+  .cta-row { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; }
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 48px; padding: 12px 26px;
+    border-radius: 999px; font-weight: 800; font-size: 15px; text-decoration: none; border: 0; cursor: pointer; font-family: inherit;
+    transition: transform .15s var(--ease), box-shadow .15s var(--ease), filter .15s;
+  }
+  .btn.primary { background: var(--candy); color: #FFFFFF; box-shadow: 0 4px 0 #A82F33, 0 10px 20px rgba(229, 72, 77, .28); text-shadow: 0 1px 0 rgba(0, 0, 0, .15); }
+  .btn.primary:hover { filter: brightness(1.05); transform: translateY(-1px); }
+  .btn.primary:active { transform: translateY(4px); box-shadow: 0 0 0 #A82F33, 0 4px 8px rgba(229, 72, 77, .25); }
+  .btn.ghost { background: var(--surface); color: var(--text); box-shadow: 0 4px 0 rgba(43, 34, 54, .08), var(--shadow-sm); }
+  .btn.ghost:hover { transform: translateY(-1px); }
+  .hero-chips { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-top: 28px; }
+  .chip { display: inline-flex; align-items: center; gap: 8px; padding: 8px 14px; border-radius: 999px; background: var(--surface); box-shadow: var(--shadow-sm); font-size: 14px; font-weight: 700; }
+  .chip i { width: 10px; height: 10px; border-radius: 50%; display: inline-block; }
+
+  /* section heads */
+  section { padding: 40px 0; }
+  .sec-head { display: flex; align-items: end; justify-content: space-between; gap: 16px; flex-wrap: wrap; margin-bottom: 22px; }
+  .sec-head h2 { font-family: var(--display); font-weight: 900; letter-spacing: -.025em; font-size: clamp(28px, 4.4vw, 40px); margin: 0; line-height: 1.1; }
+  .sec-head p { margin: 0; color: var(--text-dim); max-width: 420px; }
+
+  /* game cards */
+  .games { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px; }
+  @media (max-width: 760px) { .games { grid-template-columns: minmax(0, 1fr); } }
+  .game {
+    --c1: #FF5A5F; --c2: #FF8A3D;
+    position: relative; display: flex; flex-direction: column; overflow: hidden;
+    background: var(--surface); border: 2px solid #FFFFFF; border-radius: var(--r-lg);
+    box-shadow: 0 6px 0 rgba(43, 34, 54, .07), var(--shadow);
+    transition: transform .25s var(--spring), box-shadow .25s var(--ease);
+  }
+  .game:not(.soon):hover { transform: translateY(-6px) rotate(-.4deg); box-shadow: 0 10px 0 rgba(43, 34, 54, .07), 0 22px 40px rgba(43, 34, 54, .16); }
+  .game .art { position: relative; aspect-ratio: 16 / 9; background: linear-gradient(135deg, var(--c1), var(--c2)); overflow: hidden; }
+  .game .art svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+  .game .badge {
+    position: absolute; top: 14px; left: 14px; z-index: 2; padding: 5px 12px; border-radius: 999px;
+    background: rgba(255, 255, 255, .95); font-size: 12px; font-weight: 800; box-shadow: var(--shadow-sm);
+  }
+  .game .badge.live { color: var(--ok); }
+  .game .badge.live::before { content: ''; display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: #1FAA6B; margin-right: 6px; box-shadow: 0 0 0 3px #CFF3E4; }
+  .game .badge.wait { color: var(--text-dim); }
+  .game .body { display: flex; flex-direction: column; gap: 12px; padding: 20px 22px 22px; flex: 1; }
+  .game h3 { font-family: var(--display); font-weight: 900; font-size: 28px; letter-spacing: -.02em; margin: 0; line-height: 1.1; }
+  .game .pitch { margin: 0; color: var(--text-dim); font-size: 15px; }
+  .game .facts { display: flex; flex-wrap: wrap; gap: 8px; margin: 2px 0 4px; padding: 0; list-style: none; }
+  .game .facts li { padding: 4px 10px; border-radius: 999px; background: var(--surface-2); font-size: 13px; font-weight: 700; }
+  .game .facts li.hl { background: color-mix(in srgb, var(--c1) 14%, #FFFFFF); color: color-mix(in srgb, var(--c1) 70%, #2B2236); }
+  .game .go { margin-top: auto; align-self: stretch; }
+  .game.soon .art { filter: saturate(.55); }
+  .game.soon .go { background: var(--surface-2); color: var(--text-dim); box-shadow: none; cursor: not-allowed; text-shadow: none; }
+  .game a.stretch::after { content: ''; position: absolute; inset: 0; z-index: 1; }
+
+  /* how */
+  .steps { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; counter-reset: s; padding: 0; margin: 0; list-style: none; }
+  @media (max-width: 760px) { .steps { grid-template-columns: minmax(0, 1fr); } }
+  .steps li { position: relative; padding: 22px 22px 22px 78px; background: var(--surface); border: 2px solid #FFFFFF; border-radius: 22px; box-shadow: var(--shadow-sm); }
+  .steps li::before {
+    counter-increment: s; content: counter(s);
+    position: absolute; left: 20px; top: 20px; width: 42px; height: 42px; border-radius: 50%;
+    display: grid; place-items: center; font-family: var(--display); font-weight: 900; font-size: 20px; color: #FFFFFF;
+    box-shadow: 0 3px 0 rgba(0, 0, 0, .12);
+  }
+  .steps li:nth-child(1)::before { background: #E5484D; }
+  .steps li:nth-child(2)::before { background: #1FA889; }
+  .steps li:nth-child(3)::before { background: #6B4FE8; }
+  .steps strong { display: block; font-size: 17px; margin-bottom: 4px; }
+  .steps span { color: var(--text-dim); font-size: 15px; }
+
+  .perks { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 18px; }
+
+  footer { padding: 36px 0 48px; color: var(--text-dim); font-size: 14px; }
+  footer .wrap { display: flex; flex-wrap: wrap; gap: 8px 24px; justify-content: space-between; border-top: 1px solid var(--line); padding-top: 24px; }
+
+  @media (prefers-reduced-motion: reduce) { *, *::before, *::after { transition: none !important; animation: none !important; scroll-behavior: auto !important; } }
+  .float { animation: float 4s ease-in-out infinite; transform-origin: center; transform-box: fill-box; }
+  .float.d2 { animation-delay: -1.3s; } .float.d3 { animation-delay: -2.6s; }
+  @keyframes float { 50% { transform: translateY(-6px); } }
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#" aria-label="Meja, beranda">
+      <svg viewBox="0 0 64 64" aria-hidden="true">
+        <rect width="64" height="64" rx="16" fill="#FFF7EC" />
+        <rect x="11" y="15" width="20" height="32" rx="4" fill="#FFFFFF" stroke="#3DA5FF" stroke-width="3" transform="rotate(-12 21 31)" />
+        <rect x="33" y="15" width="20" height="32" rx="4" fill="#FFFFFF" stroke="#E5484D" stroke-width="3" transform="rotate(12 43 31)" />
+        <path d="M32 22 41 31 32 40 23 31Z" fill="#FFC83D" stroke="#FFFFFF" stroke-width="2" />
+      </svg>
+      Meja
+    </a>
+    <nav aria-label="Navigasi">
+      <a href="#game">Game</a>
+      <a href="#cara">Cara main</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="wrap">
+      <svg class="bunting" viewBox="0 0 640 44" aria-hidden="true">
+        <path d="M0 4 Q320 28 640 4" fill="none" stroke="#D9CBB8" stroke-width="2" />
+        <g id="flags"></g>
+      </svg>
+      <span class="eyebrow">4 board game · 1 perangkat</span>
+      <h1>Satu meja,<br /><span class="pop">banyak keseruan.</span></h1>
+      <p class="lead">Board game untuk dimainkan bareng di satu HP atau tablet. Oper perangkatnya ke teman, atau lawan bot. Tanpa akun, dan tetap jalan saat offline.</p>
+      <div class="cta-row">
+        <a class="btn primary" href="#game">Pilih game</a>
+        <a class="btn ghost" href="#cara">Cara main</a>
+      </div>
+      <div class="hero-chips" aria-label="Keunggulan">
+        <span class="chip"><i style="background:#E5484D"></i>Main lokal, oper HP</span>
+        <span class="chip"><i style="background:#1FA889"></i>Lawan bot</span>
+        <span class="chip"><i style="background:#3DA5FF"></i>Bisa offline</span>
+        <span class="chip"><i style="background:#FFC83D"></i>Simpan otomatis</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="game" aria-labelledby="game-title">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2 id="game-title">Pilih game-mu</h2>
+        <p>Semua game memakai panduan langkah di layar, jadi pemain baru bisa langsung ikut.</p>
+      </div>
+      <div class="games" id="games"></div>
+    </div>
+  </section>
+
+  <section id="cara" aria-labelledby="cara-title">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2 id="cara-title">Cara main di Meja</h2>
+        <p>Tidak perlu instal atau daftar. Cukup buka di browser.</p>
+      </div>
+      <ol class="steps">
+        <li><strong>Pilih game</strong><span>Ketuk kartu game di atas. Game terbuka langsung di browser.</span></li>
+        <li><strong>Atur pemain</strong><span>Isi nama, pilih warna, dan jadikan kursi kosong sebagai bot.</span></li>
+        <li><strong>Oper perangkat</strong><span>Saat giliran berganti, layar tertutup supaya kartu rahasiamu aman.</span></li>
+      </ol>
+      <div class="perks">
+        <span class="chip">📲 Tambahkan ke layar utama untuk main seperti aplikasi</span>
+        <span class="chip">💾 Permainan tersimpan dan bisa dilanjutkan</span>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>Meja · prototipe pribadi</span>
+    <span>Aturan dan data masih uji coba, bukan aturan resmi. Tidak berafiliasi dengan penerbit game mana pun.</span>
+  </div>
+</footer>
+
+<script>
+  // Game catalogue. url: path on this site (/meja-*/) or a full https URL; null = "Segera hadir".
+  const GAMES = [
+    {
+      id: 'hotstreak', name: 'Hot Streak', url: '/meja-hotstreak/', c1: '#FF5A5F', c2: '#FF8A3D',
+      pitch: 'Pasang taruhan, sumbangkan kartu rahasia, lalu tonton empat maskot balapan dengan kacau.',
+      facts: ['2–9 pemain', 'Lawan bot', 'Taruhan & balapan'], hl: 0, art: 'race',
+    },
+    {
+      id: 'splendor', name: 'Splendor', url: '/meja-splendor/', c1: '#3DA5FF', c2: '#7B5CFF',
+      pitch: 'Kumpulkan permata, beli kartu pengembangan, dan undang bangsawan. Pertama ke 15 prestise menang.',
+      facts: ['2–4 pemain', 'Lawan bot', 'Strategi'], hl: 0, art: 'gems',
+    },
+    {
+      id: 'skyteam', name: 'Sky Team', url: '/meja-skyteam/', c1: '#2EC4A6', c2: '#3DA5FF',
+      pitch: 'Pilot dan ko-pilot mendaratkan pesawat bersama, tanpa bicara, hanya lewat dadu.',
+      facts: ['2 pemain', 'Kooperatif', 'Ko-pilot AI'], hl: 1, art: 'plane',
+    },
+    {
+      id: 'shikoku', name: 'Shikoku 1889', url: 'https://shikoku.doncorleonez.my.id/', c1: '#FFC83D', c2: '#FF8A3D',
+      pitch: 'Bangun jalur kereta dan kelola perusahaan di pulau Shikoku. Main hotseat bersama pemain AI.',
+      facts: ['2–6 pemain', 'AI Easy–Hard', 'Kereta & saham'], hl: 1, art: 'island',
+    },
+  ];
+
+  const ART = {
+    race: `<svg viewBox="0 0 320 180" aria-hidden="true">
+      <rect x="40" y="0" width="240" height="180" fill="#FFDDAA" opacity=".55"/>
+      ${[0,1,2,3].map(i=>`<rect x="${40+i*60}" y="0" width="60" height="180" fill="${['#FF6B6B','#4ECDC4','#FFD166','#9B5DE5'][i]}" opacity=".18"/>`).join('')}
+      ${[1,2,3].map(i=>`<path d="M${40+i*60} 0V180" stroke="#fff" stroke-width="3" stroke-dasharray="12 10"/>`).join('')}
+      <rect x="40" y="26" width="240" height="10" fill="#2B2236"/>${Array.from({length:24},(_,i)=>`<rect x="${40+i*10}" y="${26+(i%2)*5}" width="5" height="5" fill="#fff"/><rect x="${45+i*10}" y="${31-(i%2)*5}" width="5" height="5" fill="#fff"/>`).join('')}
+      <g class="float"><circle cx="70" cy="70" r="18" fill="#FF6B6B" stroke="#fff" stroke-width="3"/><circle cx="64" cy="66" r="2.6" fill="#2B2236"/><circle cx="76" cy="66" r="2.6" fill="#2B2236"/><path d="M67 73h6l-3 4z" fill="#F4A259"/></g>
+      <g class="float d2"><rect x="117" y="96" width="26" height="42" rx="13" fill="#4ECDC4" stroke="#fff" stroke-width="3"/><circle cx="125" cy="110" r="2.6" fill="#2B2236"/><circle cx="135" cy="110" r="2.6" fill="#2B2236"/></g>
+      <g class="float d3"><circle cx="178" cy="112" r="7" fill="#FFD166" stroke="#fff" stroke-width="2.5"/><circle cx="202" cy="112" r="7" fill="#FFD166" stroke="#fff" stroke-width="2.5"/><circle cx="190" cy="126" r="17" fill="#FFD166" stroke="#fff" stroke-width="3"/><ellipse cx="190" cy="132" rx="7" ry="5" fill="#FFF3D6"/><circle cx="184" cy="122" r="2.6" fill="#2B2236"/><circle cx="196" cy="122" r="2.6" fill="#2B2236"/></g>
+      <g class="float d2">${[0,60,120,180,240,300].map(a=>`<circle cx="250" cy="${84-12}" r="8" fill="#9B5DE5" stroke="#fff" stroke-width="2" transform="rotate(${a} 250 84)"/>`).join('')}<circle cx="250" cy="84" r="11" fill="#FFD166" stroke="#fff" stroke-width="2"/><circle cx="246" cy="82" r="2.2" fill="#2B2236"/><circle cx="254" cy="82" r="2.2" fill="#2B2236"/></g>
+      <path d="M78 46l3 4 4-7 4 7 3-4-1.5 8h-11z" fill="#FFC83D" stroke="#fff" stroke-width="1.2"/>
+    </svg>`,
+    gems: `<svg viewBox="0 0 320 180" aria-hidden="true">
+      <g transform="rotate(-8 110 95)"><rect x="70" y="30" width="84" height="118" rx="10" fill="#fff"/><rect x="70" y="30" width="84" height="30" rx="10" fill="#E9F3FF"/><text x="82" y="54" font-family="ui-rounded,system-ui" font-weight="900" font-size="22" fill="#2B2236">3</text><path d="M140 36l8 6-8 12-8-12z" fill="#3B7DD8"/>${[['#D64545',3],['#2FA36B',2],['#3A3A44',4]].map(([c,n],i)=>`<circle cx="86" cy="${134-i*20}" r="9" fill="${c}" stroke="#fff" stroke-width="2"/><text x="86" y="${138-i*20}" text-anchor="middle" font-size="11" font-weight="800" fill="#fff" font-family="system-ui">${n}</text>`).join('')}</g>
+      <g transform="rotate(7 205 95)"><rect x="168" y="34" width="84" height="118" rx="10" fill="#fff"/><rect x="168" y="34" width="84" height="30" rx="10" fill="#FDE8E8"/><text x="180" y="58" font-family="ui-rounded,system-ui" font-weight="900" font-size="22" fill="#2B2236">5</text><path d="M236 40l10 16h-20z" fill="#D64545"/></g>
+      ${[['#F4F1EA',40,150],['#3B7DD8',270,46],['#2FA36B',282,140],['#E8B730',30,52]].map(([c,x,y],i)=>`<g class="float ${['','d2','d3','d2'][i]}"><circle cx="${x}" cy="${y}" r="20" fill="${c}" stroke="#fff" stroke-width="3"/><circle cx="${x}" cy="${y}" r="13" fill="none" stroke="#fff" stroke-opacity=".6" stroke-width="2" stroke-dasharray="4 3"/></g>`).join('')}
+    </svg>`,
+    plane: `<svg viewBox="0 0 320 180" aria-hidden="true">
+      <circle cx="160" cy="92" r="64" fill="#A9CBEA" stroke="#fff" stroke-width="5"/>
+      <path d="M96 92a64 64 0 0 0 128 0z" fill="#D8B48C"/>
+      <path d="M116 92h28l16 8 16-8h28" fill="none" stroke="#E5484D" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+      <g class="float"><path transform="translate(250 40) rotate(20) scale(1.6)" d="M21 16v-2l-8-5V3.5a1.5 1.5 0 0 0-3 0V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5z" fill="#fff"/></g>
+      <g class="float d2"><rect x="30" y="112" width="40" height="40" rx="9" fill="#3D7BDE" stroke="#fff" stroke-width="3"/>${[[40,122],[60,142],[50,132]].map(([x,y])=>`<circle cx="${x}" cy="${y}" r="3.6" fill="#fff"/>`).join('')}</g>
+      <g class="float d3"><rect x="250" y="116" width="40" height="40" rx="9" fill="#E27C34" stroke="#fff" stroke-width="3"/>${[[260,126],[280,126],[260,146],[280,146]].map(([x,y])=>`<circle cx="${x}" cy="${y}" r="3.6" fill="#fff"/>`).join('')}</g>
+    </svg>`,
+    island: `<svg viewBox="0 0 320 180" aria-hidden="true">
+      ${[30,60,90,120,150].map((y,i)=>`<path d="M0 ${y} q20 -6 40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0" fill="none" stroke="#fff" stroke-opacity=".35" stroke-width="2"/>`).join('')}
+      <path d="M70 96c10-26 46-40 78-34 22 4 30-12 56-8 30 4 52 22 48 44-4 20-30 22-46 34-18 14-48 12-70 2-18-8-36 0-52-8-14-8-18-18-14-30z" fill="#9BD07A" stroke="#fff" stroke-width="4"/>
+      <path d="M104 104 Q140 70 176 92 T236 98" fill="none" stroke="#fff" stroke-width="4" stroke-dasharray="2 9" stroke-linecap="round"/>
+      ${[[104,104,'#E5484D'],[176,92,'#3DA5FF'],[236,98,'#7B5CFF']].map(([x,y,c])=>`<circle cx="${x}" cy="${y}" r="8" fill="${c}" stroke="#fff" stroke-width="3"/>`).join('')}
+    </svg>`,
+  };
+
+  const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+  document.getElementById('games').innerHTML = GAMES.map(g => {
+    const live = !!g.url;
+    return `<article class="game${live ? '' : ' soon'}" style="--c1:${g.c1};--c2:${g.c2}">
+      <div class="art">${ART[g.art]}<span class="badge ${live ? 'live' : 'wait'}">${live ? 'Bisa dimainkan' : 'Segera hadir'}</span></div>
+      <div class="body">
+        <h3>${esc(g.name)}</h3>
+        <p class="pitch">${esc(g.pitch)}</p>
+        <ul class="facts">${g.facts.map((f, i) => `<li class="${i === g.hl ? 'hl' : ''}">${esc(f)}</li>`).join('')}</ul>
+        ${live
+          ? `<a class="btn primary go stretch" href="${esc(g.url)}">Main ${esc(g.name)}</a>`
+          : `<span class="btn go" aria-disabled="true">Segera hadir</span>`}
+      </div>
+    </article>`;
+  }).join('');
+
+  // Bunting flags along the hero string.
+  const flags = document.getElementById('flags'), cols = ['#E5484D', '#FFC83D', '#2EC4A6', '#3DA5FF', '#7B5CFF', '#FF8A3D'];
+  const y = x => 4 + 24 * (1 - ((2 * x / 640) - 1) ** 2) * .5;
+  for (let i = 0; i < 16; i++) {
+    const x0 = i * 40, x1 = x0 + 40;
+    const p = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+    p.setAttribute('d', `M${x0 + 3} ${y(x0 + 3)}L${x0 + 20} ${y(x0 + 20) + 18}L${x1 - 3} ${y(x1 - 3)}Z`);
+    p.setAttribute('fill', cols[i % cols.length]);
+    flags.appendChild(p);
+  }
+</script>
+</body>
+</html>

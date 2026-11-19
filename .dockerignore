@@ -1,0 +1,7 @@
+.git
+.github
+.vite
+node_modules
+scripts
+README.md
+DEPLOY.md

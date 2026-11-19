@@ -1,0 +1,12 @@
+{
+  "name": "Meja",
+  "short_name": "Meja",
+  "lang": "id",
+  "id": "./",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#FFF7EC",
+  "theme_color": "#FFF7EC",
+  "icons": [{ "src": "icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }]
+}
