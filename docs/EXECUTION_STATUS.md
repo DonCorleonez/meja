@@ -48,6 +48,8 @@ Source: [MASTER_DEVELOPMENT_PLAN.md](MASTER_DEVELOPMENT_PLAN.md) • planning co
 
 - 2026-11-21T05:19Z | ChatGPT | ISSUE16_REREVIEW_20261121 | Re-reviewed PR #13 head a1716400 and PR #15 head 61c5941e: independent CHANGES_REQUESTED reviews 6003087669 / 6003087975. Confirmed H3 timed-final-reveal fix, H1 F1–F6 rule fixes and clean 9-path H5R rebase; Node22 89/89 tests and Playwright 6/6 successful. Found P1 in bot belief.ts ownCommitted not excluded from unknownPool during 2P second submission, inconsistent world repair and candidate deck; P2 missing CI execution of rc-check and pwa-upgrade despite Muse local pass. New follow-up Issue #16 OPEN. H5R merged under owner's relaxed gate but not independently release-approved; no code merge/deploy by reviewer.
 
+- 2026-11-21T06:25:03Z | Muse | SKY_TEAM_SK0R_MERGED | Game PR #6 (https://github.com/DonCorleonez/meja-skyteam/pull/6) merged — merge commit 420304da, head 6838f194, base b0070611. Baseline only (owner approved parallel Sky Team work): main + qa/playtest-alpha + redesign-karnaval union, package-lock.json, pinned esbuild/playwright, workflows to npm ci, provenance + fidelity-matrix skeleton (6 known deviations D1–D6, BLOCKED B1–B4). Playtest script fixed to redesign DOM (data-testid selectors). Gates local: test 8/8, build jsGzip 22620/total 28157, browser playtest 5/5. CI green on PR (CI run 44874192175, Alpha playtest run 44874192210). ChatGPT review runs in parallel. No deployment. Next: SK1R (owner go-ahead needed).
+
 ## Muse update template (replace current summary, append distinct log entries)
 - Timestamp (UTC), actor, milestone, state: NOT_STARTED / QUEUED / IN_PROGRESS / BLOCKED / READY_FOR_REVIEW / CHANGES_REQUESTED / REVIEW_PASS / OWNER_ACCEPTED / RELEASED
 - Plan version; base SHA; branch; head SHA; PR URL
@@ -61,9 +63,10 @@ Update this file at milestone start, blocker, READY_FOR_REVIEW, reviewer verdict
 
 ## Ecosystem queue
 - Hot Streak: H0R–H5R RC1 merged (PR #15 bd5e07c5; H5R code SHA c2e0534d), independent re-review CHANGES_REQUESTED (PR #13 review 6003087669, PR #15 review 6003087975). CI 89/89 tests, 6/6 browser PASS, no official release. Issue #16 OPEN: 2P second-submission own-committed-card duplication in belief, automate rc-check and pwa-upgrade in CI. B1–B4 physical data, I2 star collision, devices/rights pending. No deployment.
-- Sky Team: QUEUED
+- Sky Team: S0R merged (PR #6, 420304da; head 6838f194); SK1R queued, needs owner go-ahead
 - Splendor: QUEUED
 - Hub: QUEUED
 
 Keep only non-sensitive summary and acceptance links here; private game evidence stays in game repos.
+
 
