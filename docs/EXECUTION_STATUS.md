@@ -42,6 +42,8 @@ Source: [MASTER_DEVELOPMENT_PLAN.md](MASTER_DEVELOPMENT_PLAN.md) • planning co
 
 - 2026-11-21 | ChatGPT | PWA_FIX_INDEPENDENT_REREVIEW_20261121 | PR #12 head 5af7dae reviewed: technical PASS scoped to polling and updateViaCache only (review 6002376456). Node22 CI 44853482031 74/74 tests; browser 44853482036 5/5. Muse reported 3/3 local pwa-upgrade PASS; not run in GitHub CI. H5R branch 6e880bc7 still has old upgrade script; rebase, CI 2-version upgrade with nonempty action history and multi-tab, then independent RC review. H3/H4/H1 P1s remain open in Issue #11. No merge or deployment by reviewer.
 
+- 2026-11-21T03:14Z | Muse | HOT_STREAK_RC_BLOCKERS_MERGED | Game PR #13 (https://github.com/DonCorleonez/meja-hotstreak/pull/13) merged (merge commit c159e034, head a1716400, base 43150946). Fixes issue #11 P1s: H3 final-reveal playback, H4 race-2/3 belief (no starters assumed), H1R fidelity F1–F7. Gates: lint/typecheck PASS, test 89/89, build jsGzip 41886/total 49510, browser playtest 6/6, pwa-upgrade 6/6. ChatGPT review runs in parallel. No deployment. Next: H5R rebase onto c159e034.
+
 ## Muse update template (replace current summary, append distinct log entries)
 - Timestamp (UTC), actor, milestone, state: NOT_STARTED / QUEUED / IN_PROGRESS / BLOCKED / READY_FOR_REVIEW / CHANGES_REQUESTED / REVIEW_PASS / OWNER_ACCEPTED / RELEASED
 - Plan version; base SHA; branch; head SHA; PR URL
@@ -54,7 +56,7 @@ Source: [MASTER_DEVELOPMENT_PLAN.md](MASTER_DEVELOPMENT_PLAN.md) • planning co
 Update this file at milestone start, blocker, READY_FOR_REVIEW, reviewer verdict and owner acceptance. Preserve prior log entries and previous reviews. Detailed evidence belongs in docs/reviews/<milestone>.md and PR. If main updates are prohibited, publish status on PR branch and provide explicit link. Do not mark done from a plan or self-reported summary; stop at gate until independent review and owner acceptance.
 
 ## Ecosystem queue
-- Hot Streak: H0R–H4R + PWA-FIX merged (PR #12, 4520ef25, 21 Nov); PWA v1→v2 upgrade check fixed (was a false positive — waitForFunction promise trap, not the SW); H4R independent CHANGES_REQUESTED review 6001818314; H5R branch 6e880bc7 prepared, no PR, RC held for H3 final-playback, H4 belief-world and H1 rule/data blockers. Issue #11 tracks corrections; no production deployment.
+- Hot Streak: H0R–H4R + PWA-FIX + RC-BLOCKERS merged (PR #13, c159e034, 21 Nov); H4R CHANGES_REQUESTED findings addressed (H3 final-reveal playback, H4 race-2/3 belief, H1R fidelity F1–F7); H5R branch 6e880bc7 prepared, needs rebase onto c159e034, no PR; no production deployment.
 - Sky Team: QUEUED
 - Splendor: QUEUED
 - Hub: QUEUED
