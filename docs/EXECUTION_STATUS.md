@@ -40,6 +40,8 @@ Source: [MASTER_DEVELOPMENT_PLAN.md](MASTER_DEVELOPMENT_PLAN.md) • planning co
 
 - 2026-11-21T02:19Z | Muse | HOT_STREAK_PWA_FIX_MERGED | Game PR #12 (https://github.com/DonCorleonez/meja-hotstreak/pull/12) merged (merge commit 4520ef25, head 5af7dae5, base 361dbc4c). PWA upgrade P1-OPEN was a false positive: Playwright 1.55 `waitForFunction` with a promise-returning predicate returns after one await without re-polling, so the H5R check read caches ~0 ms after reload; the SW lifecycle was verified correct. Fix: explicit evaluate poll loop in scripts/pwa-upgrade.mjs + `updateViaCache:'none'` on SW registration; `npm run pwa-upgrade` PASS 3/3. CI green on the PR. ChatGPT review runs in parallel. Status recorded on game main ddc431ec. NO deployment. Next: H5R RC finalization.
 
+- 2026-11-21 | ChatGPT | PWA_FIX_INDEPENDENT_REREVIEW_20261121 | PR #12 head 5af7dae reviewed: technical PASS scoped to polling and updateViaCache only (review 6002376456). Node22 CI 44853482031 74/74 tests; browser 44853482036 5/5. Muse reported 3/3 local pwa-upgrade PASS; not run in GitHub CI. H5R branch 6e880bc7 still has old upgrade script; rebase, CI 2-version upgrade with nonempty action history and multi-tab, then independent RC review. H3/H4/H1 P1s remain open in Issue #11. No merge or deployment by reviewer.
+
 ## Muse update template (replace current summary, append distinct log entries)
 - Timestamp (UTC), actor, milestone, state: NOT_STARTED / QUEUED / IN_PROGRESS / BLOCKED / READY_FOR_REVIEW / CHANGES_REQUESTED / REVIEW_PASS / OWNER_ACCEPTED / RELEASED
 - Plan version; base SHA; branch; head SHA; PR URL
