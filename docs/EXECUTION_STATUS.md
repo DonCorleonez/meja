@@ -44,6 +44,8 @@ Source: [MASTER_DEVELOPMENT_PLAN.md](MASTER_DEVELOPMENT_PLAN.md) • planning co
 
 - 2026-11-21T03:14Z | Muse | HOT_STREAK_RC_BLOCKERS_MERGED | Game PR #13 (https://github.com/DonCorleonez/meja-hotstreak/pull/13) merged (merge commit c159e034, head a1716400, base 43150946). Fixes issue #11 P1s: H3 final-reveal playback, H4 race-2/3 belief (no starters assumed), H1R fidelity F1–F7. Gates: lint/typecheck PASS, test 89/89, build jsGzip 41886/total 49510, browser playtest 6/6, pwa-upgrade 6/6. ChatGPT review runs in parallel. No deployment. Next: H5R rebase onto c159e034.
 
+- 2026-11-21T05:13Z | Muse | HOT_STREAK_H5R_RC1_MERGED | Game PR #15 (https://github.com/DonCorleonez/meja-hotstreak/pull/15) merged — merge commit bd5e07c5106b6d3d5348d76ddc577f92ca72946a, head 61c5941e, base 57ee5813. PR #14 was conflicted (rebase was not a rebase: commit 393656a7 parented old base 6e880bc7; diverged, CI never ran) and was superseded by fresh branch feat/hotstreak-h5r-rc2 from main 57ee5813 with the true 9-path change set; code commit c2e0534d parent-verified via API (ahead 1, behind 0). CI green on PR #15 (CI run 44869232146, Alpha playtest run 44869232137). Gates on corrected tree (local, Node v24.22.1): test 89/89, build jsGzip 41886/total 49510, rc-check PASS, playtest 5/5, pwa-upgrade 3/3, screenshots 8/8. ChatGPT review runs in parallel. No deployment. Hot Streak is now at RC1; sequence continues with Sky Team after owner go-ahead.
+
 ## Muse update template (replace current summary, append distinct log entries)
 - Timestamp (UTC), actor, milestone, state: NOT_STARTED / QUEUED / IN_PROGRESS / BLOCKED / READY_FOR_REVIEW / CHANGES_REQUESTED / REVIEW_PASS / OWNER_ACCEPTED / RELEASED
 - Plan version; base SHA; branch; head SHA; PR URL
@@ -56,9 +58,10 @@ Source: [MASTER_DEVELOPMENT_PLAN.md](MASTER_DEVELOPMENT_PLAN.md) • planning co
 Update this file at milestone start, blocker, READY_FOR_REVIEW, reviewer verdict and owner acceptance. Preserve prior log entries and previous reviews. Detailed evidence belongs in docs/reviews/<milestone>.md and PR. If main updates are prohibited, publish status on PR branch and provide explicit link. Do not mark done from a plan or self-reported summary; stop at gate until independent review and owner acceptance.
 
 ## Ecosystem queue
-- Hot Streak: H0R–H4R + PWA-FIX + RC-BLOCKERS merged (PR #13, c159e034, 21 Nov); H4R CHANGES_REQUESTED findings addressed (H3 final-reveal playback, H4 race-2/3 belief, H1R fidelity F1–F7); H5R branch 6e880bc7 prepared, needs rebase onto c159e034, no PR; no production deployment.
+- Hot Streak: H0R–H4R + PWA-FIX + RC-BLOCKERS + H5R RC1 merged (PR #15, bd5e07c5, 21 Nov); PR #14 was conflicted (bad rebase) and superseded by corrected rebase on branch feat/hotstreak-h5r-rc2; RC SHA c2e0534d, jsGzip 41886/total 49510; remaining open as documented limitations: I2, B1–B4, real-phone bot profiling, Hard ≈ Normal, owner device smoke; no production deployment.
 - Sky Team: QUEUED
 - Splendor: QUEUED
 - Hub: QUEUED
 
 Keep only non-sensitive summary and acceptance links here; private game evidence stays in game repos.
+
