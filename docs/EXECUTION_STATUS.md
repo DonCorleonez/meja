@@ -50,6 +50,8 @@ Source: [MASTER_DEVELOPMENT_PLAN.md](MASTER_DEVELOPMENT_PLAN.md) • planning co
 
 - 2026-11-21T06:24Z | Muse | HOT_STREAK_CHATGPT_FINDINGS_MERGED | Game PR #17 (https://github.com/DonCorleonez/meja-hotstreak/pull/17) merged — merge commit 938b35bdf03bf4572ad3891f9e6a77a1397865bd, head 71be3923, base d8c77d4f. Closes Issue #16: belief.ts exact-conservation rewrite (ownCommitted excluded from unknownPool; validateWorld over all components; resample-or-drop diagnostics; submittedByPlayer opponent modeling), 1152-world conservation matrix, rc-check + pwa-upgrade as required CI gates, PWA script strengthened (11 checks), README/RELEASE_NOTES/docs fixes, findings register docs/reviews/chatgpt-findings.md. Gates: test 92/92 (incl. 1000-seed fuzz), build jsGzip 42130/total 49754, rc-check PASS, browser playtest 6/6, pwa-upgrade 3/3. CI green on PR #17 (CI run 44874192248, Alpha playtest run 44874192207). ChatGPT review runs in parallel. No deployment. RC1 technical acceptance unblocked; sequence continues with Sky Team after owner go-ahead.
 
+- 2026-11-21T06:25:03Z | Muse | SKY_TEAM_SK0R_MERGED | Game PR #6 (https://github.com/DonCorleonez/meja-skyteam/pull/6) merged — merge commit 420304da, head 6838f194, base b0070611. Baseline only (owner approved parallel Sky Team work): main + qa/playtest-alpha + redesign-karnaval union, package-lock.json, pinned esbuild/playwright, workflows to npm ci, provenance + fidelity-matrix skeleton (6 known deviations D1–D6, BLOCKED B1–B4). Playtest script fixed to redesign DOM (data-testid selectors). Gates local: test 8/8, build jsGzip 22620/total 28157, browser playtest 5/5. CI green on PR (CI run 44874192175, Alpha playtest run 44874192210). ChatGPT review runs in parallel. No deployment. Next: SK1R (owner go-ahead needed).
+
 ## Muse update template (replace current summary, append distinct log entries)
 - Timestamp (UTC), actor, milestone, state: NOT_STARTED / QUEUED / IN_PROGRESS / BLOCKED / READY_FOR_REVIEW / CHANGES_REQUESTED / REVIEW_PASS / OWNER_ACCEPTED / RELEASED
 - Plan version; base SHA; branch; head SHA; PR URL
@@ -63,10 +65,11 @@ Update this file at milestone start, blocker, READY_FOR_REVIEW, reviewer verdict
 
 ## Ecosystem queue
 - Hot Streak: H0R–H5R RC1 merged (PR #15 bd5e07c5; H5R code SHA c2e0534d) + ChatGPT-findings round merged (PR #17 938b35bd; closes Issue #16 — belief exact-conservation, CI gates rc-check + pwa-upgrade, PWA 11 checks, findings register). CI 92/92 tests, 6/6 browser PASS, no official release. Issue #16 CLOSED. B1–B4 physical data, I2 star collision, devices/rights pending. No deployment.
-- Sky Team: QUEUED
+- Sky Team: S0R merged (PR #6, 420304da; head 6838f194); SK1R queued, needs owner go-ahead
 - Splendor: QUEUED
 - Hub: QUEUED
 
 Keep only non-sensitive summary and acceptance links here; private game evidence stays in game repos.
+
 
 
