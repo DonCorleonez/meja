@@ -33,6 +33,8 @@ Source: [MASTER_DEVELOPMENT_PLAN.md](MASTER_DEVELOPMENT_PLAN.md) • planning co
 
 - 2026-11-20T23:31Z | Muse | HOT_STREAK_H2R_MERGED | Owner said "coba lagi" 21 Nov 06:03 WIB and approved cards at once. Game PR #8 (https://github.com/DonCorleonez/meja-hotstreak/pull/8) merged (merge commit de810c9c, head d4233770, base 82d74f4f). Visual-only redesign (23 files). PAT workflow push verified: 3 workflow files pushed via custom.github-pat put-file (2ad9dfef, 1ce94d02, d4233770). CI first run failed Lighthouse only (run 44834613748); rerun of failed jobs concluded success — runner variance (local repro 0.98 vs main UI 0.99). ChatGPT review runs in parallel. No deployment. Next: H3R, then H4R, then H5R rebase (PWA upgrade P1-OPEN still blocks the RC).
 
+- 2026-11-21T00:05Z | Muse | HOT_STREAK_H3R_MERGED | Owner said "coba lagi" 21 Nov 06:03 WIB and approved cards at once. Game PR #9 (https://github.com/DonCorleonez/meja-hotstreak/pull/9) merged (merge commit 1eaf1bce, head 55038b58, base 43353d41). Immersion (timeline playback, announcer, first-game guide, result ledger, spectator view, sounds) rebased onto post-H2R main; 6 conflicts resolved. CI first run failed typecheck — Track.tsx highlight prop missing from the push manifest (coordinator miss); fixed with a follow-up commit, CI green on rerun (verify + playtest browser/engine success). ChatGPT review runs in parallel. PWA upgrade P1-OPEN still blocks the RC. No deployment. Next: H4R, then H5R rebase.
+
 ## Muse update template (replace current summary, append distinct log entries)
 - Timestamp (UTC), actor, milestone, state: NOT_STARTED / QUEUED / IN_PROGRESS / BLOCKED / READY_FOR_REVIEW / CHANGES_REQUESTED / REVIEW_PASS / OWNER_ACCEPTED / RELEASED
 - Plan version; base SHA; branch; head SHA; PR URL
@@ -45,10 +47,11 @@ Source: [MASTER_DEVELOPMENT_PLAN.md](MASTER_DEVELOPMENT_PLAN.md) • planning co
 Update this file at milestone start, blocker, READY_FOR_REVIEW, reviewer verdict and owner acceptance. Preserve prior log entries and previous reviews. Detailed evidence belongs in docs/reviews/<milestone>.md and PR. If main updates are prohibited, publish status on PR branch and provide explicit link. Do not mark done from a plan or self-reported summary; stop at gate until independent review and owner acceptance.
 
 ## Ecosystem queue
-- Hot Streak: H0R accepted/merged; H1R merged (PR #7); H2R merged (PR #8, visual-only); H3R/H4R ready, push next; H5R RC pending siblings + PWA P1-OPEN; official release not verified.
+- Hot Streak: H0R accepted/merged; H1R merged (PR #7); H2R merged (PR #8, visual-only); H3R merged (PR #9, immersion); H4R ready, push next; H5R RC pending siblings + PWA P1-OPEN; official release not verified.
 - Sky Team: QUEUED
 - Splendor: QUEUED
 - Hub: QUEUED
 
 Keep only non-sensitive summary and acceptance links here; private game evidence stays in game repos.
+
 
