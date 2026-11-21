@@ -52,6 +52,8 @@ Source: [MASTER_DEVELOPMENT_PLAN.md](MASTER_DEVELOPMENT_PLAN.md) • planning co
 
 - 2026-11-21T06:25:03Z | Muse | SKY_TEAM_SK0R_MERGED | Game PR #6 (https://github.com/DonCorleonez/meja-skyteam/pull/6) merged — merge commit 420304da, head 6838f194, base b0070611. Baseline only (owner approved parallel Sky Team work): main + qa/playtest-alpha + redesign-karnaval union, package-lock.json, pinned esbuild/playwright, workflows to npm ci, provenance + fidelity-matrix skeleton (6 known deviations D1–D6, BLOCKED B1–B4). Playtest script fixed to redesign DOM (data-testid selectors). Gates local: test 8/8, build jsGzip 22620/total 28157, browser playtest 5/5. CI green on PR (CI run 44874192175, Alpha playtest run 44874192210). ChatGPT review runs in parallel. No deployment. Next: SK1R (owner go-ahead needed).
 
+- 2026-11-21T06:47Z | Muse | HOT_STREAK_RC1_DEPLOYED | Owner explicitly authorized deploy 21 Nov 13:37 WIB. Hot Streak RC1 (main 6a3138e4: PR #15 bd5e07c5 + PR #17 938b35bd) built locally (npm ci + build PASS, jsGzip 42130, total 49754) and deployed live to https://meja.doncorleonez.my.id/meja-hotstreak/ on VPS oracle-vps-01: prebuilt dist/ transferred to /home/ubuntu/meja/games/meja-hotstreak/ (previous build backed up to /home/ubuntu/meja-backups/meja-hotstreak.bak-20261121-0643), container meja-web rebuilt per DEPLOY.md (no git pull; no DNS/tunnel/nginx changes). Verification: origin 127.0.0.1:8190 and public both 200 with correct MIME (HTML/JS/CSS/sw.js), new hashed assets served, public sw.js byte-identical to build (sha256 af12fbe1…); missing asset 404; siblings 200. Deploy fix: scp'd files landed 660/770 → nginx 403/404; fixed to 644/755. Known follow-up: Cloudflare rewrites public sw.js Cache-Control to max-age=14400 despite origin no-cache (content correct; owner-side cache-rule fix if needed). RC1 technical acceptance declaration still pending with owner. Status recorded on game main.
+
 ## Muse update template (replace current summary, append distinct log entries)
 - Timestamp (UTC), actor, milestone, state: NOT_STARTED / QUEUED / IN_PROGRESS / BLOCKED / READY_FOR_REVIEW / CHANGES_REQUESTED / REVIEW_PASS / OWNER_ACCEPTED / RELEASED
 - Plan version; base SHA; branch; head SHA; PR URL
@@ -64,12 +66,13 @@ Source: [MASTER_DEVELOPMENT_PLAN.md](MASTER_DEVELOPMENT_PLAN.md) • planning co
 Update this file at milestone start, blocker, READY_FOR_REVIEW, reviewer verdict and owner acceptance. Preserve prior log entries and previous reviews. Detailed evidence belongs in docs/reviews/<milestone>.md and PR. If main updates are prohibited, publish status on PR branch and provide explicit link. Do not mark done from a plan or self-reported summary; stop at gate until independent review and owner acceptance.
 
 ## Ecosystem queue
-- Hot Streak: H0R–H5R RC1 merged (PR #15 bd5e07c5; H5R code SHA c2e0534d) + ChatGPT-findings round merged (PR #17 938b35bd; closes Issue #16 — belief exact-conservation, CI gates rc-check + pwa-upgrade, PWA 11 checks, findings register). CI 92/92 tests, 6/6 browser PASS, no official release. Issue #16 CLOSED. B1–B4 physical data, I2 star collision, devices/rights pending. No deployment.
+- Hot Streak: H0R–H5R RC1 merged (PR #15 bd5e07c5; H5R code SHA c2e0534d) + ChatGPT-findings round merged (PR #17 938b35bd; closes Issue #16 — belief exact-conservation, CI gates rc-check + pwa-upgrade, PWA 11 checks, findings register). CI 92/92 tests, 6/6 browser PASS, no official release. Issue #16 CLOSED. B1–B4 physical data, I2 star collision, devices/rights pending. **DEPLOYED live 2026-11-21 (RC1 main 6a3138e4) at https://meja.doncorleonez.my.id/meja-hotstreak/ (origin + public verified 200, correct MIME; public sw.js byte-identical to build).** Known follow-up: Cloudflare rewrites public sw.js Cache-Control to max-age=14400 despite origin no-cache.
 - Sky Team: S0R merged (PR #6, 420304da; head 6838f194); SK1R queued, needs owner go-ahead
 - Splendor: QUEUED
 - Hub: QUEUED
 
 Keep only non-sensitive summary and acceptance links here; private game evidence stays in game repos.
+
 
 
 
